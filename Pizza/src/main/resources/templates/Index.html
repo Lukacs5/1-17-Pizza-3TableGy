@@ -2,47 +2,25 @@
 <html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>PizzaKecskemét</title>
-    <link rel="icon" type="image/x-icon" th:href="@{/Pictures/PizzaFavicon.png}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/css.css}">
+    <title th:replace="@{Fragments/Links}";></title>
 </head>
 <body>
-<nav >
-    <ul>
-        <li style="float: left; background-color:background-color:FFFFFF"><img th:src="@{/Pictures/Pizza.png}" style="height:43px; padding:3px;"></li>
-        <li class="btn"><a href="" >Belépés</a></li>
-        <li class="btn"><a target="_blank" href="">Rólunk</a></li>
-        <li class="btn"><a href="">Étlapunk</a></li>
-        <li class="btn"><a href="">Főoldal</a></li>
-    </ul>
-</nav>
+<nav th:replace="@{Fragments/Nav}";></nav>
 
-<div class="foto1">
-    <div class="ptext">
-     <span class="border">
-         Kecskemét Pizza
-     </span>
-    </div>
-</div>
+<div th:replace="@{Fragments/FelsoFoto}";></div>
 <section class="valamiszin">
     <h2>Szeretettel várjuk hangulatos éttermünkben!</h2>
-    <div th:replace="Fragments/Start.html">
+    <div >
+        <p>Éttermünk 1995 óta várja Vendégeit Kecskeméten! Több mint húsz éves fennállásunkat kizárólag Önöknek, Nektek köszönhetjük, és annak a folyamatos támogatásnak, amit kapunk Önöktől, Tőletek.
 
-    </div>
+            Kiemelt figyelmet fordítunk Vendégeink elégedettségére és az ételeink minőségére, éppen ezért kizárólag friss, magyar termelőktől származó alapanyagokkal dolgozunk.
 
-</section>
+            Ételeink többségét nem csak helyben fogyasztással kínáljuk, Kecskemét területén ingyenes házhozszállítást is biztosítunk. A város peremén és a külterületeken élőket sem szeretnénk SALOON élmények nélkül hagyni, így a teljesség igénye nélkül -szállítási díj ellenében- Kadafalvára és a Halasi úti hobbirészre is szállítunk!
 
-    <div class="foto1">
-
-    </div>
-<section class="valamiszin footer">
-    <div class="parent">
-        <div class="Kapcsolatok"><h1>Kapcsolat</h1> <br> Email: kecskemetPizza@gmail.com <br><a href="">Vagy kattints ide!</a> </div>
-        <div class="Nyitvatartas"><h1>Nyitva tartás</h1><br> H-P: 8:00-20:00 <br> Sz-V: 10:00-18:00 </div>
-        <div class="Terkep map-footer-wrap">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d411.93265171549695!2d19.70786226255237!3d46.92025367148908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4743d9f52641982d%3A0xa21dc642619280c2!2sIldik%C3%B3%20vegyesboltja!5e0!3m2!1shu!2shu!4v1667407989414!5m2!1shu!2shu"
-                    border="0"></iframe> </div>
+            Mára hagyomány, hogy vasárnaponként a helyben fogyasztott pizzákra kedvezményt biztosítunk, ezzel hozzájárulva a felhőtlen családi szórakozáshoz!</p>
     </div>
 </section>
+<div th:replace="@{Fragments/AlsoFoto}"></div>
+
 </body>
 </html>

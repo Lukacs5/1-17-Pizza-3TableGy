@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Okt 30. 13:15
--- Kiszolgáló verziója: 10.4.22-MariaDB
--- PHP verzió: 8.1.2
+-- Létrehozás ideje: 2022. Nov 03. 19:09
+-- Kiszolgáló verziója: 10.4.25-MariaDB
+-- PHP verzió: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,10 +31,19 @@ USE `pizzatabla`;
 
 CREATE TABLE `felhasznalok` (
   `id` int(11) NOT NULL,
-  `felhasznaloNev` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `jelszo` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `email` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL
+  `felh` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `jelsz` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `email` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `felhasznalok`
+--
+
+INSERT INTO `felhasznalok` (`id`, `felh`, `jelsz`, `email`, `admin`) VALUES
+(1, 'alma', 'almna', 'poganybenedek@gmail.com', 0),
+(2, 'babok', 'babok', 'babok@a.hu', 0);
 
 -- --------------------------------------------------------
 
@@ -22002,6 +22011,12 @@ INSERT INTO `rendeles` (`az`, `pizzanev`, `darab`, `felvetel`, `kiszallitas`) VA
 --
 
 --
+-- A tábla indexei `felhasznalok`
+--
+ALTER TABLE `felhasznalok`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- A tábla indexei `kategoria`
 --
 ALTER TABLE `kategoria`
@@ -22022,6 +22037,12 @@ ALTER TABLE `rendeles`
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
 --
+
+--
+-- AUTO_INCREMENT a táblához `felhasznalok`
+--
+ALTER TABLE `felhasznalok`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT a táblához `rendeles`

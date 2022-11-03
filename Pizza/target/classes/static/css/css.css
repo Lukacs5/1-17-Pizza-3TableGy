@@ -23,12 +23,20 @@ ul {
 nav li {
   float: right;
 }
-
-li a {
+.nev span
+{
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 20px 20px;
+  text-decoration: none;
+}
+li a {
+  font-size:20px;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 20px 20px;
   text-decoration: none;
   transform: perspective(100px) translatez(0px);
   transition: transform 150ms linear;

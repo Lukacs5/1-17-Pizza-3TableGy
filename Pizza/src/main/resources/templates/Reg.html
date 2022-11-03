@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="@{Fragments/Links}";></title>
+</head>
+<body>
+<nav th:replace="@{Fragments/Nav}";></nav>
+
+<div th:replace="@{Fragments/FelsoFoto}";></div>
+<section class="valamiszin">
+    <form class="form" action="#" th:action="@{regUser}" th:object="${felh}" method="post" >
+
+        <input  type="text" class="form__input" th:field="*{felh}" placeholder="Felhasználónév " autocomplete="off"><br>
+        <input  type="password" class="form__input" th:field="*{jelsz}" placeholder="Jelszó " autocomplete="off"><br>
+        <input  type="email" class="form__input" th:field="*{email}" placeholder="Email " autocomplete="off"><br>
+
+        <input class="form__input" type="submit" value="Regisztrálok!"><br>
+
+    </form>
+</section>
+<div th:replace="@{Fragments/AlsoFoto}"></div>
+</body>
+</html>

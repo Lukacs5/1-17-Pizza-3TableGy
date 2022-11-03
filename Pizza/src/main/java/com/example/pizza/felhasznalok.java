@@ -1,14 +1,22 @@
 package com.example.pizza;
 
+
 public class felhasznalok {
+
     private int id;
     private String felh,jelsz,email;
+    private boolean admin;
 
-    public felhasznalok(int id, String felh, String jelsz, String email) {
+
+    public felhasznalok(int id, String felh, String jelsz, String email, boolean admin) {
         this.id = id;
         this.felh = felh;
         this.jelsz = jelsz;
         this.email = email;
+        this.admin = admin;
+    }
+    public felhasznalok() {
+
     }
 
     public int getId() {
@@ -41,5 +49,13 @@ public class felhasznalok {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }
