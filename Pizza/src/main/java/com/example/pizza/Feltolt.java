@@ -84,7 +84,7 @@ public class Feltolt {
             ResultSet rs = st.executeQuery("Select Count(*) From komment");
             rs.next();
             int id = (rs.getInt(1) + 1);
-            st.execute("Insert into komment Values (" + id + ",'" + a.getFelhNev() +"','"+a.getEmail() + "','" + a.getSzoveg() + "')");
+            st.execute("Insert into komment Values (" + id + ",'" + a.getFelhNev() +"','"+a.getEmail() + "','" + a.getSzoveg() + "','" + a.getDatum() + "')");
         } catch (SQLException e) {
             System.out.println(e);
         }

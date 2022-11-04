@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @Controller
@@ -14,6 +16,8 @@ public class BigController {
 
     Feltolt dataBase = new Feltolt("jdbc:mysql://localhost/pizzatabla?user=root");
     ArrayList<osszRendeles> rendelesek = dataBase.Rendelesek();
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    LocalDateTime now = LocalDateTime.now();
     felhasznalok a;
     @GetMapping("/")
     public String index(Model model)
@@ -74,18 +78,27 @@ public class BigController {
     @PostMapping("/kommBe")
     public String regUser(@ModelAttribute Komment komm,Model model)
     {
+        String ido = dtf.format(now);
         if(a == null)
         {
+            komm.setDatum(ido);
             komm.setFelhNev("Vendég");
             komm.setEmail("Vendég");
         }
         else
         {
+            komm.setDatum(ido);
             komm.setFelhNev(a.getFelh());
             komm.setEmail(a.getEmail());
         }
         dataBase.insertKomm(komm);
         komm = null;
         return "redirect:/";
+    }
+    @GetMapping("/uzenetek")
+    public String Uzenetek(Model model)
+    {
+        
+        return "Uzenetek";
     }
 }
