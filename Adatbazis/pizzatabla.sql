@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Nov 03. 19:09
+-- Létrehozás ideje: 2022. Nov 04. 18:29
 -- Kiszolgáló verziója: 10.4.25-MariaDB
 -- PHP verzió: 8.1.10
 
@@ -42,8 +42,9 @@ CREATE TABLE `felhasznalok` (
 --
 
 INSERT INTO `felhasznalok` (`id`, `felh`, `jelsz`, `email`, `admin`) VALUES
-(1, 'alma', 'almna', 'poganybenedek@gmail.com', 0),
-(2, 'babok', 'babok', 'babok@a.hu', 0);
+(1, 'alma', 'almna', 'poganybenedek@gmail.com', 1),
+(2, 'babok', 'babok', 'babok@a.hu', 0),
+(3, 'odon', 'odon', 'odon@nagymeno.com', 0),
 
 -- --------------------------------------------------------
 
@@ -65,6 +66,32 @@ INSERT INTO `kategoria` (`nev`, `ar`) VALUES
 ('főnemes', 950),
 ('király', 1250),
 ('lovag', 1150);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `komment`
+--
+
+CREATE TABLE `komment` (
+  `id` int(11) NOT NULL,
+  `felhNev` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `email` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `szoveg` varchar(300) COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `datum` varchar(40) COLLATE utf8mb4_hungarian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `komment`
+--
+
+INSERT INTO `komment` (`id`, `felhNev`, `email`, `szoveg`, `datum`) VALUES
+(1, 'Vendég', 'Vendég', 'safsedgdrfg', '2022/11/04 16:54:05'),
+(2, 'Vendég', 'Vendég', 'Alma', '2022/11/04 17:11:38'),
+(3, 'odon', 'odon@nagymeno.com', 'fdbgjkiobndfbgyjokhnlkjhnobgdf', '2022/11/04 17:11:38'),
+(4, 'alma', 'poganybenedek@gmail.com', 'jhlhjkljhl', '2022/11/04 17:11:38'),
+(5, 'Vendég', 'Vendég', '', '2022/11/04 17:38:01'),
+(6, 'Vendég', 'Vendég', 'fdgdg', '2022/11/04 18:04:07');
 
 -- --------------------------------------------------------
 
@@ -22023,6 +22050,12 @@ ALTER TABLE `kategoria`
   ADD PRIMARY KEY (`nev`);
 
 --
+-- A tábla indexei `komment`
+--
+ALTER TABLE `komment`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- A tábla indexei `pizza`
 --
 ALTER TABLE `pizza`
@@ -22043,6 +22076,12 @@ ALTER TABLE `rendeles`
 --
 ALTER TABLE `felhasznalok`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT a táblához `komment`
+--
+ALTER TABLE `komment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT a táblához `rendeles`
