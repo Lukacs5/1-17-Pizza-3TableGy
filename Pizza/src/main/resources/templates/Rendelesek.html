@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title th:replace="@{Fragments/Links}";></title>
+</head>
+<body>
+<nav th:replace="@{Fragments/Nav}";></nav>
+
+<div th:replace="@{Fragments/FelsoFoto}";></div>
+<section class="valamiszin">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>db</th>
+      <th>Ár</th>
+      <th>Pizzanév</th>
+      <th>Kategorianév</th>
+      <th>Vegetáriánus-e</th>
+      <th>Felvétel ideje</th>
+      <th>Kiszállítás ideje</th>
+    </tr>
+    <th:block th:each="rend : ${rendeles}">
+      <tr>
+        <td th:text="${rend.getAz()}"></td>
+        <td th:text="${rend.getDarab()}"></td>
+        <td th:text="${rend.getAr()}"></td>
+        <td th:text="${rend.getPizzanev()}"></td>
+        <td th:text="${rend.getKategorianev()}"></td>
+        <td th:text="${rend.isVega()}"></td>
+        <td th:text="${rend.getFelvetel()}"></td>
+        <td th:text="${rend.getKiszallitas()}"></td>
+      </tr>
+    </th:block>
+  </table>
+</section>
+<div th:replace="@{Fragments/AlsoFoto}"></div>
+</body>
+</html>

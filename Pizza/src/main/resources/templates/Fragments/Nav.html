@@ -4,9 +4,9 @@
     <li style="float: left; font-size:20px;" class="nev" th:if="${loggedInUser}"><span th:text="'Üdvözlünk ' + ${loggedInUser.getFelh()} + ' !'"></span></li>
     <li class="btn" th:if="!${loggedInUser}"><a th:href="@{login}" >Belépés</a></li>
     <li class="btn" th:if="${loggedInUser}" ><a th:href="@{logout}" >Kilépés</a></li>
-    <li class="btn"><a th:href="@{reg}" >Regisztráció</a></li>
-    <li class="btn"><a target="_blank" href="">Rólunk</a></li>
-    <li class="btn"><a href="">Étlapunk</a></li>
+    <li class="btn" th:if="!${loggedInUser}"><a th:href="@{reg}" >Regisztráció</a></li>
+    <li class="btn" ><a th:href="@{kapcs}" >Kapcsolat</a></li>
+    <span th:if="${loggedInUser}"><li class="btn" th:if="${loggedInUser.isAdmin() == true}"><a th:href="@{rend}" >Rendelések</a></li></span>
     <li class="btn"><a th:href="@{/}">Főoldal</a></li>
   </ul>
 </nav>

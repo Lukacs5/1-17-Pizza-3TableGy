@@ -7,10 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+
 @Controller
 public class BigController {
 
     Feltolt dataBase = new Feltolt("jdbc:mysql://localhost/pizzatabla?user=root");
+    ArrayList<osszRendeles> rendelesek = dataBase.Rendelesek();
     felhasznalok a;
     @GetMapping("/")
     public String index(Model model)
@@ -54,5 +57,35 @@ public class BigController {
     {
         a = null;
         return "Index";
+    }
+    @GetMapping("/rend")
+    public String Rendelesek(Model model)
+    {
+        model.addAttribute("rendeles",rendelesek);
+        return "Rendelesek";
+    }
+    @GetMapping("/kapcs")
+    public String Kapcsolat(Model model)
+    {
+
+        model.addAttribute("komm",new Komment());
+        return "Kapcsolat";
+    }
+    @PostMapping("/kommBe")
+    public String regUser(@ModelAttribute Komment komm,Model model)
+    {
+        if(a == null)
+        {
+            komm.setFelhNev("Vendég");
+            komm.setEmail("Vendég");
+        }
+        else
+        {
+            komm.setFelhNev(a.getFelh());
+            komm.setEmail(a.getEmail());
+        }
+        dataBase.insertKomm(komm);
+        komm = null;
+        return "redirect:/";
     }
 }

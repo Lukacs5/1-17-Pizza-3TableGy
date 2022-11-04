@@ -48,5 +48,46 @@ public class Feltolt {
             return null;
         }
     }
+    public  ArrayList<osszRendeles> Rendelesek()
+    {
+        ArrayList<osszRendeles> rend = new ArrayList<>();
+        try
+        {
+            Statement st = cn.createStatement();
+            ResultSet res = st.executeQuery("SELECT rendeles.az,rendeles.darab,rendeles.pizzanev,kategoria.nev,pizza.vegetarianus,(kategoria.ar*rendeles.darab) as ar,rendeles.felvetel,rendeles.kiszallitas FROM (rendeles inner join pizza on pizza.nev = rendeles.pizzanev) inner join kategoria on kategoria.nev = pizza.kategorianev;");
+            while(res.next())
+            {
+                int az = res.getInt("az");
+                int db = res.getInt("darab");
+                String pnev = res.getString("pizzanev");
+                String knev = res.getString("nev");
+                boolean vega = res.getBoolean("vegetarianus");
+                int ar = res.getInt("ar");
+                String fel = res.getString("felvetel");
+                String ki = res.getString("kiszallitas");
+                osszRendeles rendeles =new osszRendeles(az,db,ar,pnev,knev,fel,ki,vega);
+                rend.add(rendeles);
+            }
+            return rend;
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+            return null;
+        }
+
+
+    }
+    public void insertKomm(Komment a) {
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery("Select Count(*) From komment");
+            rs.next();
+            int id = (rs.getInt(1) + 1);
+            st.execute("Insert into komment Values (" + id + ",'" + a.getFelhNev() +"','"+a.getEmail() + "','" + a.getSzoveg() + "')");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 
 }

@@ -9,12 +9,10 @@
 
 <div th:replace="@{Fragments/FelsoFoto}";></div>
 <section class="valamiszin">
+    <form class="form" action="#" th:action="@{kommBe}" th:object="${komm}" method="post" >
 
-
-    <form class="form" action="#" th:action="@{login}" th:object="${loginFelh}" method="post" >
-        <input class="form__input" type="text" th:field="*{felh}" placeholder="Felhasználónév"><br>
-        <input class="form__input" type="password" th:field="*{jelsz}" placeholder="Jelszó"><br>
-        <input class="form__input" type="submit" value="Belépés!"><br>
+        <input  type="text" class="form__input" th:field="*{szoveg}" placeholder="Üzeneted:" autocomplete="off"><br>
+        <input class="form__input" type="submit" value="Elküldöm!"><br>
     </form>
 </section>
 <div th:replace="@{Fragments/AlsoFoto}"></div>
