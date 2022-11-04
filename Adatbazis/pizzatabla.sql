@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Nov 04. 18:33
+-- Létrehozás ideje: 2022. Nov 04. 18:36
 -- Kiszolgáló verziója: 10.4.25-MariaDB
 -- PHP verzió: 8.1.10
 
@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `pizzatabla`
 --
+DROP DATABASE IF EXISTS `pizzatabla`;
 CREATE DATABASE IF NOT EXISTS `pizzatabla` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci;
 USE `pizzatabla`;
 
