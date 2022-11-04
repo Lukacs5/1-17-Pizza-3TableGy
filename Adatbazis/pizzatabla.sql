@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Nov 04. 18:29
+-- Létrehozás ideje: 2022. Nov 04. 18:33
 -- Kiszolgáló verziója: 10.4.25-MariaDB
 -- PHP verzió: 8.1.10
 
@@ -45,6 +45,7 @@ INSERT INTO `felhasznalok` (`id`, `felh`, `jelsz`, `email`, `admin`) VALUES
 (1, 'alma', 'almna', 'poganybenedek@gmail.com', 1),
 (2, 'babok', 'babok', 'babok@a.hu', 0),
 (3, 'odon', 'odon', 'odon@nagymeno.com', 0),
+(4, '', '', '', 0);
 
 -- --------------------------------------------------------
 
