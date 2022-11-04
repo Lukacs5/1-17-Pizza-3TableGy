@@ -117,30 +117,3 @@ ellenőrzéséhez, valamint a GitHub címét.
 
 **Be kell adni** a **Neptun MeetStreet**-en keresztül a dokumentációt.
 Akik közösen csinálják, mindenki adja be a dokumentációt.
-
-**[Segítség az egyes részekhez]{.underline}**
-
-  -----------------------------------------------------------------------
-  **Feladatrész**          **Fejezet a gyakorlati PDF fájlban**
-  ------------------------ ----------------------------------------------
-  Regisztráció,            Spring-Boot -- Security
-  Bejelentkezési lehetőség 
-
-  felhasználói szerepek    Spring-Boot -- Security
-
-  Űrlap, Szerver oldali    Spring Űrlapok
-  validáció                
-
-  Felhasználó nevének      Spring-Boot -- Security
-  lekérdezése              
-
-  Adatbázis írás/olvasás   Spring-Boot-Adatbázis-JPA
-
-  GitHub használat         GitHub-GitLab használat.docx
-
-  Megvalósítás Interneten  Java-Spring-Megjelenítés az
-  a Microsoft Azure        Interneten-Microsoft Azure-al.docx
-  felhőben                 
-
-  RESTful API              Spring-Boot -- RESTful API
-  -----------------------------------------------------------------------
