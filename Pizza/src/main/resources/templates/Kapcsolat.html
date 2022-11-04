@@ -9,9 +9,10 @@
 
 <div th:replace="@{Fragments/FelsoFoto}";></div>
 <section class="valamiszin">
+    <h2 th:if="${error == true}" style="color:red;">Adjon meg szöveget!</h2>
     <form class="form" action="#" th:action="@{kommBe}" th:object="${komm}" method="post" >
 
-        <input  type="text" class="form__input" th:field="*{szoveg}" placeholder="Üzeneted:" autocomplete="off"><br>
+        <textarea  type="text" class="form__input" th:field="*{szoveg}" placeholder="Üzeneted:" autocomplete="off"/><br>
         <input class="form__input" type="submit" value="Elküldöm!"><br>
     </form>
 </section>

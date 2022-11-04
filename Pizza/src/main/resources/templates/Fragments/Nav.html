@@ -1,12 +1,12 @@
-<nav xmlns:th="http://www.w3.org/1999/xhtml">
+<nav xmlns:th="http://www.w3.org/1999/xhtml" style="height:100px;">
   <ul>
-    <li style="float: left; background-color:background-color:FFFFFF"><img th:src="@{/Pictures/Pizza.png}" style="height:65px; padding:3px;"></li>
+    <li style="float: left; background-color:background-color:FFFFFF"><a class="image" th:href="@{/}"><img th:src="@{/Pictures/Pizza.png}" style="height:80px;"></a></li>
     <li style="float: left; font-size:20px;" class="nev" th:if="${loggedInUser}"><span th:text="'Üdvözlünk ' + ${loggedInUser.getFelh()} + ' !'"></span></li>
     <li class="btn" th:if="!${loggedInUser}"><a th:href="@{login}" >Belépés</a></li>
     <li class="btn" th:if="${loggedInUser}" ><a th:href="@{logout}" >Kilépés</a></li>
     <li class="btn" th:if="!${loggedInUser}"><a th:href="@{reg}" >Regisztráció</a></li>
     <li class="btn" ><a th:href="@{kapcs}" >Kapcsolat</a></li>
-    <span th:if="${loggedInUser}"><li class="btn" th:if="${loggedInUser.isAdmin() == true}"><a th:href="@{kapcs}" >Kapcsolat</a></li></span>
+    <span th:if="${loggedInUser}"><li class="btn" th:if="${loggedInUser.isAdmin() == true}"><a th:href="@{uzenetek}" >Üzenetek</a></li></span>
     <span th:if="${loggedInUser}"><li class="btn" th:if="${loggedInUser.isAdmin() == true}"><a th:href="@{rend}" >Rendelések</a></li></span>
     <li class="btn"><a th:href="@{/}">Főoldal</a></li>
   </ul>

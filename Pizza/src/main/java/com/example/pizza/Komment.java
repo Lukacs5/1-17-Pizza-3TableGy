@@ -4,6 +4,14 @@ public class Komment {
     private int id;
     private String felhNev,email,szoveg,datum;
 
+    public Komment(int id, String felhNev, String email, String szoveg, String datum) {
+        this.id = id;
+        this.felhNev = felhNev;
+        this.email = email;
+        this.szoveg = szoveg;
+        this.datum = datum;
+    }
+
     public Komment() {
 
     }

@@ -89,5 +89,32 @@ public class Feltolt {
             System.out.println(e);
         }
     }
+    public  ArrayList<Komment> getKomments()
+    {
+        ArrayList<Komment> kommentek = new ArrayList<>();
+        try
+        {
+            Statement st = cn.createStatement();
+            ResultSet res = st.executeQuery("SELECT * FROM komment");
+            while(res.next())
+            {
+                int id = res.getInt("id");
+                String felhNev = res.getString("felhNev");
+                String email = res.getString("email");
+                String szoveg = res.getString("szoveg");
+                String datum = res.getString("datum");
+                Komment komm = new Komment(id,felhNev,email,szoveg,datum);
+                kommentek.add(komm);
+            }
+            return kommentek;
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+            return null;
+        }
+
+
+    }
 
 }

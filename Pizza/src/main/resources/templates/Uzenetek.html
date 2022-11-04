@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:replace="@{Fragments/Links}";></title>
 </head>
 <body>
+<nav th:replace="@{Fragments/Nav}";></nav>
 
+<div th:replace="@{Fragments/FelsoFoto}";></div>
+<section class="valamiszin">
+    <div class="table-wrapper">
+        <table class="fl-table">
+            <tr>
+                <th>Id</th>
+                <th>Felhasználó név</th>
+                <th>Email</th>
+                <th>Szöveg</th>
+                <th>Dátum</th>
+            </tr>
+            <th:block th:each="komm : ${kommentek}">
+                <tr>
+                    <td th:text="${komm.getId()}"></td>
+                    <td th:text="${komm.getFelhNev()}"></td>
+                    <td th:text="${komm.getEmail()}"></td>
+                    <td th:text="${komm.getSzoveg()}"></td>
+                    <td th:text="${komm.getDatum()}"></td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+</section>
+<div th:replace="@{Fragments/AlsoFoto}"></div>
 </body>
 </html>

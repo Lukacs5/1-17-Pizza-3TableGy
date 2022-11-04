@@ -16,8 +16,8 @@ public class BigController {
 
     Feltolt dataBase = new Feltolt("jdbc:mysql://localhost/pizzatabla?user=root");
     ArrayList<osszRendeles> rendelesek = dataBase.Rendelesek();
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-    LocalDateTime now = LocalDateTime.now();
+    boolean error = false;
+
     felhasznalok a;
     @GetMapping("/")
     public String index(Model model)
@@ -65,6 +65,7 @@ public class BigController {
     @GetMapping("/rend")
     public String Rendelesek(Model model)
     {
+        model.addAttribute("loggedInUser",a);
         model.addAttribute("rendeles",rendelesek);
         return "Rendelesek";
     }
@@ -72,33 +73,48 @@ public class BigController {
     public String Kapcsolat(Model model)
     {
 
+        model.addAttribute("loggedInUser",a);
+        model.addAttribute("error",error);
         model.addAttribute("komm",new Komment());
+        error = false;
         return "Kapcsolat";
     }
     @PostMapping("/kommBe")
     public String regUser(@ModelAttribute Komment komm,Model model)
     {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
         String ido = dtf.format(now);
-        if(a == null)
+        if(komm.getSzoveg() == "")
         {
-            komm.setDatum(ido);
-            komm.setFelhNev("Vendég");
-            komm.setEmail("Vendég");
+            error = true;
+            return "redirect:/kapcs";
         }
         else
         {
-            komm.setDatum(ido);
-            komm.setFelhNev(a.getFelh());
-            komm.setEmail(a.getEmail());
+            if(a == null)
+            {
+                komm.setDatum(ido);
+                komm.setFelhNev("Vendég");
+                komm.setEmail("Vendég");
+            }
+            else
+            {
+                komm.setDatum(ido);
+                komm.setFelhNev(a.getFelh());
+                komm.setEmail(a.getEmail());
+            }
+            dataBase.insertKomm(komm);
+            komm = null;
+            return "redirect:/";
         }
-        dataBase.insertKomm(komm);
-        komm = null;
-        return "redirect:/";
     }
     @GetMapping("/uzenetek")
     public String Uzenetek(Model model)
     {
-        
+        model.addAttribute("loggedInUser",a);
+        ArrayList<Komment> komments = dataBase.getKomments();
+        model.addAttribute("kommentek",komments);
         return "Uzenetek";
     }
 }
