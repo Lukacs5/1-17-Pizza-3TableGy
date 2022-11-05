@@ -2,7 +2,7 @@ package com.example.pizza;
 
 public class Komment {
     private int id;
-    private String felhNev,email,szoveg,datum;
+    private String felhNev, email, szoveg, datum;
 
     public Komment(int id, String felhNev, String email, String szoveg, String datum) {
         this.id = id;

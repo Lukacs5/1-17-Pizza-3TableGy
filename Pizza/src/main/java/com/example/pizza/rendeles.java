@@ -1,8 +1,8 @@
- package com.example.pizza;
+package com.example.pizza;
 
 public class rendeles {
-    private int id,db;
-    private String pizzaNev,fel,ki;
+    private int id, db;
+    private String pizzaNev, fel, ki;
 
     public rendeles(int id, int db, String pizzaNev, String fel, String ki) {
         this.id = id;

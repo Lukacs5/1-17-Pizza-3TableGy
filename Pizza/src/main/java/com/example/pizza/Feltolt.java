@@ -14,49 +14,41 @@ public class Feltolt {
         }
     }
 
-    public void insertUser(felhasznalok a)
-    {
-        try
-        {
+    public void insertUser(felhasznalok a) {
+        try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery("Select Count(*) From felhasznalok");
             rs.next();
             int id = (rs.getInt(1) + 1);
-            st.execute("Insert into felhasznalok Values ("+id+",'"+a.getFelh()+"','"+a.getJelsz()+"','"+a.getEmail()+"',False)");
-        }catch (SQLException e)
-        {
+            st.execute("Insert into felhasznalok Values (" + id + ",'" + a.getFelh() + "','" + a.getJelsz() + "','" + a.getEmail() + "',False)");
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    public felhasznalok Login(felhasznalok a)
-    {
-        try
-        {
+
+    public felhasznalok Login(felhasznalok a) {
+        try {
             Statement st = cn.createStatement();
-            ResultSet res = st.executeQuery("Select * from felhasznalok where felh = '"+a.getFelh()+"' and jelsz = '"+a.getJelsz()+"'");
+            ResultSet res = st.executeQuery("Select * from felhasznalok where felh = '" + a.getFelh() + "' and jelsz = '" + a.getJelsz() + "'");
             res.next();
             int id = res.getInt("id");
             String email = res.getString("email");
             boolean amdin = res.getBoolean("admin");
-            felhasznalok c = new felhasznalok(id,a.getFelh(),a.getJelsz(),email,amdin);
+            felhasznalok c = new felhasznalok(id, a.getFelh(), a.getJelsz(), email, amdin);
 
             return c;
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println(e);
             return null;
         }
     }
-    public  ArrayList<osszRendeles> Rendelesek()
-    {
+
+    public ArrayList<osszRendeles> Rendelesek() {
         ArrayList<osszRendeles> rend = new ArrayList<>();
-        try
-        {
+        try {
             Statement st = cn.createStatement();
             ResultSet res = st.executeQuery("SELECT rendeles.az,rendeles.darab,rendeles.pizzanev,kategoria.nev,pizza.vegetarianus,(kategoria.ar*rendeles.darab) as ar,rendeles.felvetel,rendeles.kiszallitas FROM (rendeles inner join pizza on pizza.nev = rendeles.pizzanev) inner join kategoria on kategoria.nev = pizza.kategorianev;");
-            while(res.next())
-            {
+            while (res.next()) {
                 int az = res.getInt("az");
                 int db = res.getInt("darab");
                 String pnev = res.getString("pizzanev");
@@ -65,51 +57,46 @@ public class Feltolt {
                 int ar = res.getInt("ar");
                 String fel = res.getString("felvetel");
                 String ki = res.getString("kiszallitas");
-                osszRendeles rendeles =new osszRendeles(az,db,ar,pnev,knev,fel,ki,vega);
+                osszRendeles rendeles = new osszRendeles(az, db, ar, pnev, knev, fel, ki, vega);
                 rend.add(rendeles);
             }
             return rend;
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println(e);
             return null;
         }
 
 
     }
+
     public void insertKomm(Komment a) {
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery("Select Count(*) From komment");
             rs.next();
             int id = (rs.getInt(1) + 1);
-            st.execute("Insert into komment Values (" + id + ",'" + a.getFelhNev() +"','"+a.getEmail() + "','" + a.getSzoveg() + "','" + a.getDatum() + "')");
+            st.execute("Insert into komment Values (" + id + ",'" + a.getFelhNev() + "','" + a.getEmail() + "','" + a.getSzoveg() + "','" + a.getDatum() + "')");
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    public  ArrayList<Komment> getKomments()
-    {
+
+    public ArrayList<Komment> getKomments() {
         ArrayList<Komment> kommentek = new ArrayList<>();
-        try
-        {
+        try {
             Statement st = cn.createStatement();
             ResultSet res = st.executeQuery("SELECT * FROM komment");
-            while(res.next())
-            {
+            while (res.next()) {
                 int id = res.getInt("id");
                 String felhNev = res.getString("felhNev");
                 String email = res.getString("email");
                 String szoveg = res.getString("szoveg");
                 String datum = res.getString("datum");
-                Komment komm = new Komment(id,felhNev,email,szoveg,datum);
+                Komment komm = new Komment(id, felhNev, email, szoveg, datum);
                 kommentek.add(komm);
             }
             return kommentek;
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println(e);
             return null;
         }

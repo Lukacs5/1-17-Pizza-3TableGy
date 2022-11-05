@@ -1,7 +1,7 @@
 package com.example.pizza;
 
 public class pizza {
-    private String nev,knev;
+    private String nev, knev;
     private Boolean vega;
 
     public pizza(String nev, String knev, Boolean vega) {

@@ -4,7 +4,7 @@ package com.example.pizza;
 public class felhasznalok {
 
     private int id;
-    private String felh,jelsz,email;
+    private String felh, jelsz, email;
     private boolean admin;
 
 
@@ -15,6 +15,7 @@ public class felhasznalok {
         this.email = email;
         this.admin = admin;
     }
+
     public felhasznalok() {
 
     }

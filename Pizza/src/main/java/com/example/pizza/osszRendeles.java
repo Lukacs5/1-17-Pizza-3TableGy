@@ -1,8 +1,8 @@
 package com.example.pizza;
 
 public class osszRendeles {
-    private int az,darab,ar;
-    private String pizzanev,kategorianev,felvetel,kiszallitas;
+    private int az, darab, ar;
+    private String pizzanev, kategorianev, felvetel, kiszallitas;
     boolean vega;
 
     public osszRendeles(int az, int darab, int ar, String pizzanev, String kategorianev, String felvetel, String kiszallitas, boolean vega) {

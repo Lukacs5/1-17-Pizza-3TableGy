@@ -75,7 +75,7 @@ font-size:25px;
   display: block;
   color: white;
   text-align: center;
-  padding: 15px 25px 0px 25px;
+  padding: 17px 25px 0px 25px;
   text-decoration: none;
   transform: perspective(100px) translatez(0px);
   transition: transform 150ms linear;

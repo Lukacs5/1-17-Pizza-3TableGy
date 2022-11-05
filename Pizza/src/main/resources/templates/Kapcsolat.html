@@ -2,17 +2,17 @@
 <html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title th:replace="@{Fragments/Links}";></title>
+    <title th:replace="@{Fragments/Links}" ;></title>
 </head>
 <body>
-<nav th:replace="@{Fragments/Nav}";></nav>
+<nav th:replace="@{Fragments/Nav}" ;></nav>
 
-<div th:replace="@{Fragments/FelsoFoto}";></div>
+<div th:replace="@{Fragments/FelsoFoto}" ;></div>
 <section class="valamiszin">
     <h2 th:if="${error == true}" style="color:red;">Adjon meg szöveget!</h2>
-    <form class="form" action="#" th:action="@{kommBe}" th:object="${komm}" method="post" >
+    <form class="form" action="#" th:action="@{kommBe}" th:object="${komm}" method="post">
 
-        <textarea  type="text" class="form__input" th:field="*{szoveg}" placeholder="Üzeneted:" autocomplete="off"/><br>
+        <textarea type="text" class="form__input" th:field="*{szoveg}" placeholder="Üzeneted:" autocomplete="off"/><br>
         <input class="form__input" type="submit" value="Elküldöm!"><br>
     </form>
 </section>
