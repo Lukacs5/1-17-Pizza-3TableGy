@@ -1,5 +1,7 @@
 package com.example.pizza;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -31,12 +33,18 @@ public class AdatbazisFuggvenyek {
     }
     public void insertUser(felhasznalok a) {
         try {
+            String pass = a.getJelsz();
+            MessageDigest passHash = MessageDigest.getInstance("SHA-256");
+            passHash.update(pass.getBytes());
+            pass=new String(passHash.digest());
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery("Select Count(*) From felhasznalok");
             rs.next();
             int id = (rs.getInt(1) + 1);
-            st.execute("Insert into felhasznalok Values (" + id + ",'" + a.getFelh() + "','" + a.getJelsz() + "','" + a.getEmail() + "',False)");
+            st.execute("Insert into felhasznalok Values (" + id + ",'" + a.getFelh() + "','" + pass + "','" + a.getEmail() + "',False)");
         } catch (SQLException e) {
+            System.out.println(e);
+        } catch (NoSuchAlgorithmException e) {
             System.out.println(e);
         }
     }
@@ -45,8 +53,12 @@ public class AdatbazisFuggvenyek {
     {
         try
         {
+            String pass = a.getJelsz();
+            MessageDigest passHash = MessageDigest.getInstance("SHA-256");
+            passHash.update(pass.getBytes());
+            pass = new String(passHash.digest());
             Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery("Select Count(*) From felhasznalok where felh = '"+a.getFelh()+"' and jelsz = '"+a.getJelsz()+"'");
+            ResultSet rs = st.executeQuery("Select Count(*) From felhasznalok where felh = '"+a.getFelh()+"' and jelsz = '"+pass+"'");
             rs.next();
             int szam = rs.getInt(1);
             if(szam ==0)
@@ -55,7 +67,7 @@ public class AdatbazisFuggvenyek {
             }
             else {
                 Statement st2 = cn.createStatement();
-                ResultSet res = st2.executeQuery("Select * from felhasznalok where felh = '"+a.getFelh()+"' and jelsz = '"+a.getJelsz()+"'");
+                ResultSet res = st2.executeQuery("Select * from felhasznalok where felh = '"+a.getFelh()+"' and jelsz = '"+pass+"'");
                 res.next();
                 int id = res.getInt("id");
                 String email = res.getString("email");
@@ -66,6 +78,9 @@ public class AdatbazisFuggvenyek {
         }
         catch (SQLException e)
         {
+            System.out.println(e);
+            return null;
+        } catch (NoSuchAlgorithmException e) {
             System.out.println(e);
             return null;
         }

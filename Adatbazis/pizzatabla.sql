@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Nov 04. 18:36
--- Kiszolgáló verziója: 10.4.25-MariaDB
--- PHP verzió: 8.1.10
+-- Gép: localhost
+-- Létrehozás ideje: 2022. Nov 09. 18:54
+-- Kiszolgáló verziója: 10.4.21-MariaDB
+-- PHP verzió: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `pizzatabla`
 --
-DROP DATABASE IF EXISTS `pizzatabla`;
 CREATE DATABASE IF NOT EXISTS `pizzatabla` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci;
 USE `pizzatabla`;
 
