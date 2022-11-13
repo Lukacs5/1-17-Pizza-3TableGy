@@ -6,6 +6,7 @@
     <li class="btn" th:if="${loggedInUser}" ><a th:href="@{logout}" >Kilépés</a></li>
     <li class="btn" th:if="!${loggedInUser}"><a th:href="@{reg}" >Regisztráció</a></li>
     <li class="btn" ><a th:href="@{kapcs}" >Kapcsolat</a></li>
+    <li class="btn" th:if="${loggedInUser}" ><a th:href="@{etlap}" >Étlap</a></li>
     <span th:if="${loggedInUser}"><li class="btn" th:if="${loggedInUser.isAdmin() == true}"><a th:href="@{uzenetek}" >Üzenetek</a></li></span>
     <span th:if="${loggedInUser}"><li class="btn" th:if="${loggedInUser.isAdmin() == true}"><a th:href="@{rend}" >Rendelések</a></li></span>
     <li class="btn"><a th:href="@{/}">Főoldal</a></li>

@@ -108,8 +108,24 @@ public class AdatbazisFuggvenyek {
             System.out.println(e);
             return null;
         }
-
-
+    }
+    public ArrayList<pizza> GetPizzak() {
+        ArrayList<pizza> pizzak = new ArrayList<>();
+        try {
+            Statement st = cn.createStatement();
+            ResultSet res = st.executeQuery("SELECT * FROM pizza");
+            while (res.next()) {
+                String pnev = res.getString("nev");
+                String knev = res.getString("kategorianev");
+                boolean vega = res.getBoolean("vegetarianus");
+                pizza p = new pizza(pnev, knev, vega);
+                pizzak.add(p);
+            }
+            return pizzak;
+        } catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
     public void insertKomm(Komment a) {

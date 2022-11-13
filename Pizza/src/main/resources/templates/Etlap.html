@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="@{Fragments/Links}" ;></title>
+</head>
+<body>
+<nav th:replace="@{Fragments/Nav}" ;></nav>
+
+<div th:replace="@{Fragments/FelsoFoto}" ;></div>
+<section class="valamiszin">
+    <div class="table-wrapper">
+        <table class="fl-table">
+            <thead>
+            <tr>
+                <th>Pizza neve</th>
+                <th>Kategória neve</th>
+                <th>Vegetáriánus-e</th>
+            </tr>
+            </thead>
+            <th:block th:each="pizza : ${pizzak}">
+                <tr>
+                    <td th:text="${pizza.getNev()}"></td>
+                    <td th:text="${pizza.getKnev()}"></td>
+                    <td th:text="${pizza.getVega()}"></td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+</section>
+<div th:replace="@{Fragments/AlsoFoto}"></div>
+</body>
+</html>

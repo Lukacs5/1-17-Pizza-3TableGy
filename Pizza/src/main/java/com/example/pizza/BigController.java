@@ -17,6 +17,7 @@ public class BigController {
     AdatbazisFuggvenyek dataBase = new AdatbazisFuggvenyek("jdbc:mysql://localhost/pizzatabla?user=root");
 
     ArrayList<osszRendeles> rendelesek = dataBase.Rendelesek();
+    ArrayList<pizza> pizzak = dataBase.GetPizzak();
     boolean error = false;
 
     felhasznalok mainUser;
@@ -80,6 +81,12 @@ public class BigController {
         model.addAttribute("loggedInUser", mainUser);
         model.addAttribute("rendeles", rendelesek);
         return "Rendelesek";
+    }
+    @GetMapping("/etlap")
+    public String Etlap(Model model) {
+        model.addAttribute("loggedInUser", mainUser);
+        model.addAttribute("pizzak",pizzak);
+        return "Etlap";
     }
 
     @GetMapping("/kapcs")
