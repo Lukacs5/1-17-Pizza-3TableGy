@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Nov 13. 13:46
+-- Létrehozás ideje: 2022. Nov 13. 14:30
 -- Kiszolgáló verziója: 10.4.25-MariaDB
 -- PHP verzió: 8.1.10
 
@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS `felhasznalok`;
 CREATE TABLE `felhasznalok` (
   `id` int(11) NOT NULL,
   `felh` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `jelsz` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `jelsz` varchar(250) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `email` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
