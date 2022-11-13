@@ -1,28 +1,16 @@
 # 1-17-Pizza-3TableGy
+## A Fleadat megtekinthető itt :
+[http://kecskemetpizza.asuscomm.com/](http://kecskemetpizza.asuscomm.com/)
+
 
 ## Table of contents
 * [General info](#general-info)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* [Java alkalmazások Beadandó - gyakorlat](#Java alkalmazások Beadandó - gyakorlat)
+
+* [Java alkalmazások Beadandó - gyakorlat](JavaalkalmazásokBeadandógyakorlat)
 
 ## General info
-This project is simple Lorem ipsum dolor generator.
-	
-## Technologies
-Project is created with:
-* Lorem version: 12.3
-* Ipsum version: 2.33
-* Ament library version: 999
-	
-## Setup
-To run this project, install it locally using npm:
-
-```
-$ cd ../lorem
-$ npm install
-$ npm start
-```
+Az alkalazás java springel készült
+az adatbázis Mariadb-vel van megvalositva
 
 
 ## Java alkalmazások Beadandó - gyakorlat
