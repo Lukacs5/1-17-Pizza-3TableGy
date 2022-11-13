@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Gép: localhost
--- Létrehozás ideje: 2022. Nov 09. 18:54
--- Kiszolgáló verziója: 10.4.21-MariaDB
--- PHP verzió: 8.1.6
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2022. Nov 13. 13:46
+-- Kiszolgáló verziója: 10.4.25-MariaDB
+-- PHP verzió: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,6 +29,7 @@ USE `pizzatabla`;
 -- Tábla szerkezet ehhez a táblához `felhasznalok`
 --
 
+DROP TABLE IF EXISTS `felhasznalok`;
 CREATE TABLE `felhasznalok` (
   `id` int(11) NOT NULL,
   `felh` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
@@ -42,10 +43,8 @@ CREATE TABLE `felhasznalok` (
 --
 
 INSERT INTO `felhasznalok` (`id`, `felh`, `jelsz`, `email`, `admin`) VALUES
-(1, 'alma', 'almna', 'poganybenedek@gmail.com', 1),
-(2, 'babok', 'babok', 'babok@a.hu', 0),
-(3, 'odon', 'odon', 'odon@nagymeno.com', 0),
-(4, '', '', '', 0);
+(1, 'admin', '�iv�A���M�߱g��s�K��o*�H�', 'admin@admin.hu', 1),
+(2, 'user', '��m�c��i���\0ui��5Hmڲ��[���', 'user@user.hu', 0);
 
 -- --------------------------------------------------------
 
@@ -53,6 +52,7 @@ INSERT INTO `felhasznalok` (`id`, `felh`, `jelsz`, `email`, `admin`) VALUES
 -- Tábla szerkezet ehhez a táblához `kategoria`
 --
 
+DROP TABLE IF EXISTS `kategoria`;
 CREATE TABLE `kategoria` (
   `nev` varchar(20) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `ar` int(11) NOT NULL
@@ -74,6 +74,7 @@ INSERT INTO `kategoria` (`nev`, `ar`) VALUES
 -- Tábla szerkezet ehhez a táblához `komment`
 --
 
+DROP TABLE IF EXISTS `komment`;
 CREATE TABLE `komment` (
   `id` int(11) NOT NULL,
   `felhNev` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
@@ -100,6 +101,7 @@ INSERT INTO `komment` (`id`, `felhNev`, `email`, `szoveg`, `datum`) VALUES
 -- Tábla szerkezet ehhez a táblához `pizza`
 --
 
+DROP TABLE IF EXISTS `pizza`;
 CREATE TABLE `pizza` (
   `nev` varchar(20) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `kategorianev` varchar(20) COLLATE utf8mb4_hungarian_ci NOT NULL,
@@ -192,6 +194,7 @@ INSERT INTO `pizza` (`nev`, `kategorianev`, `vegetarianus`) VALUES
 -- Tábla szerkezet ehhez a táblához `rendeles`
 --
 
+DROP TABLE IF EXISTS `rendeles`;
 CREATE TABLE `rendeles` (
   `az` int(11) NOT NULL,
   `pizzanev` varchar(20) COLLATE utf8mb4_hungarian_ci NOT NULL,
