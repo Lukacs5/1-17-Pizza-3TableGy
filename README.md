@@ -1,7 +1,7 @@
 # 1-17-Pizza-3TableGy
 ## A Fleadat megtekinthető itt :
 [http://kecskemetpizza.asuscomm.com/](http://kecskemetpizza.asuscomm.com/)
-
+[http://kecskemetpizza.asuscomm.com:8080/api/](http://kecskemetpizza.asuscomm.com:8080/api/)
 
 ## Table of contents
 * [General info](#general-info)
